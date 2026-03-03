@@ -1,15 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
-
-  <head>
-    <meta charset="UTF-8">
-    <title>Untitled</title>
-    
-
-  </head>
-    
-  <body>
-  <!DOCTYPE html><html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,12 +80,11 @@ section.active{display:block}
 .btn-cancel{background:var(--card2);color:var(--text)}
 .empty{text-align:center;padding:40px;color:var(--muted);grid-column:1/-1}
 .empty-icon{font-size:3rem;margin-bottom:10px}
-.del{background:rgba(255,50,50,.1);color:#ff5555;border:none;padding:4px 10px;border-radius:6px;cursor:pointer;font-size:.75rem;margin-top:8px}
-.del:hover{background:rgba(255,50,50,.25)}
 @media(max-width:600px){.nav-links{display:none}.hamburger{display:block}.hero h1{font-size:1.5rem}.grid{grid-template-columns:1fr 1fr}}
 </style>
 </head>
-<body><nav>
+<body>
+<nav>
   <div class="logo" onclick="go('home')">⚡ TechArab</div>
   <ul class="nav-links">
     <li><a onclick="go('home')">الرئيسية</a></li>
@@ -112,7 +101,9 @@ section.active{display:block}
   <a onclick="go('articles');toggleMob()">📰 مقالات</a>
   <a onclick="go('about');toggleMob()">👤 من أنا</a>
   <a onclick="go('contact');toggleMob()">📬 تواصل</a>
-</div><section id="home" class="active">
+</div>
+
+<section id="home" class="active">
   <div class="hero">
     <div class="avatar">⚡</div>
     <h1>مرحباً بك في TechArab</h1>
@@ -131,13 +122,19 @@ section.active{display:block}
   <br>
   <div class="sec-header"><div class="sec-title">أحدث <span>المقالات</span></div><button class="add-btn" onclick="go('articles')">عرض الكل</button></div>
   <div class="grid" id="hArts"></div>
-</section><section id="apps">
+</section>
+
+<section id="apps">
   <div class="sec-header"><div class="sec-title">🛠 <span>أدوات وتطبيقات</span></div><button class="add-btn" onclick="open_('appM')">+ أضف أداة</button></div>
   <div class="grid" id="appsList"></div>
-</section><section id="articles">
+</section>
+
+<section id="articles">
   <div class="sec-header"><div class="sec-title">📰 <span>مقالات وشروحات</span></div><button class="add-btn" onclick="open_('artM')">+ أضف مقالة</button></div>
   <div class="grid" id="artsList"></div>
-</section><section id="about">
+</section>
+
+<section id="about">
   <div class="sec-title" style="margin-bottom:20px">👤 <span style="color:var(--p)">من أنا</span></div>
   <div class="about-card">
     <div class="about-top">
@@ -155,10 +152,15 @@ section.active{display:block}
     <br>
     <button class="btn btn-p" onclick="open_('aboutM')">✏️ تعديل نبذتي</button>
   </div>
-</section><section id="contact">
-  <div class="sec-header"><div class="sec-title">📬 <span>تواصل معي</span></div><button class="add-btn" onclick="open_('conM')">+ أضف رابط</button></div>
+</section>
+
+<section id="contact">
+  <div class="sec-header"><div class="sec-title">📬 <span>تواصل معي</span></div></div>
   <div class="con-grid" id="conList"></div>
-</section><!-- App Modal --><div class="overlay" id="appM">
+</section>
+
+<!-- Modals -->
+<div class="overlay" id="appM">
   <div class="modal">
     <h3>➕ إضافة أداة أو تطبيق</h3>
     <div class="fg"><label>اسم الأداة</label><input id="aN" placeholder="مثال: ChatGPT"></div>
@@ -168,7 +170,9 @@ section.active{display:block}
     <div class="fg"><label>أيقونة (إيموجي)</label><input id="aI" placeholder="🤖" maxlength="2" style="font-size:1.5rem;text-align:center"></div>
     <div class="modal-btns"><button class="btn btn-cancel" onclick="close_('appM')">إلغاء</button><button class="btn btn-p" onclick="addApp()">إضافة</button></div>
   </div>
-</div><!-- Article Modal --><div class="overlay" id="artM">
+</div>
+
+<div class="overlay" id="artM">
   <div class="modal">
     <h3>📝 إضافة مقالة أو شرح</h3>
     <div class="fg"><label>العنوان</label><input id="rT" placeholder="عنوان المقالة"></div>
@@ -177,22 +181,17 @@ section.active{display:block}
     <div class="fg"><label>رابط (اختياري)</label><input id="rU" placeholder="https://..."></div>
     <div class="modal-btns"><button class="btn btn-cancel" onclick="close_('artM')">إلغاء</button><button class="btn btn-p" onclick="addArt()">إضافة</button></div>
   </div>
-</div><!-- About Modal --><div class="overlay" id="aboutM">
+</div>
+
+<div class="overlay" id="aboutM">
   <div class="modal">
     <h3>✏️ تعديل نبذة تعريفية</h3>
     <div class="fg"><label>النبذة</label><textarea id="aboutI" style="min-height:120px"></textarea></div>
     <div class="modal-btns"><button class="btn btn-cancel" onclick="close_('aboutM')">إلغاء</button><button class="btn btn-p" onclick="saveAbout()">حفظ</button></div>
   </div>
-</div><!-- Contact Modal --><div class="overlay" id="conM">
-  <div class="modal">
-    <h3>📬 إضافة رابط تواصل</h3>
-    <div class="fg"><label>المنصة</label><input id="cN" placeholder="مثال: يوتيوب"></div>
-    <div class="fg"><label>أيقونة (إيموجي)</label><input id="cI" placeholder="📺" maxlength="2" style="font-size:1.5rem;text-align:center"></div>
-    <div class="fg"><label>اسم الحساب</label><input id="cH" placeholder="@YourHandle"></div>
-    <div class="fg"><label>الرابط</label><input id="cU" placeholder="https://..."></div>
-    <div class="modal-btns"><button class="btn btn-cancel" onclick="close_('conM')">إلغاء</button><button class="btn btn-p" onclick="addCon()">إضافة</button></div>
-  </div>
-</div><script>
+</div>
+
+<script>
 let D={
   apps:[
     {id:1,name:'ChatGPT',cat:'ذكاء اصطناعي',desc:'أقوى نموذج ذكاء اصطناعي للدردشة وكتابة المحتوى',url:'https://chat.openai.com',icon:'🤖'},
@@ -204,9 +203,9 @@ let D={
     {id:2,title:'كيف تبدأ في إنشاء محتوى تقني',cat:'نصائح',excerpt:'دليل شامل للمبتدئين في عالم صناعة المحتوى التقني...',url:'',date:'فبراير 2025'},
   ],
   cons:[
-    {id:1,name:'يوتيوب',icon:'📺',handle:'@TechArab',url:'https://youtube.com'},
-    {id:2,name:'انستقرام',icon:'📸',handle:'@TechArab',url:'https://instagram.com'},
-    {id:3,name:'تيك توك',icon:'🎵',handle:'@TechArab',url:'https://tiktok.com'},
+    {id:1,name:'يوتيوب',icon:'📺',handle:'@tareqteche',url:'https://youtube.com/@tareqteche?si=q_iZh-9cylmAj5Oi'},
+    {id:2,name:'انستقرام',icon:'📸',handle:'@tareq.aakef2',url:'https://www.instagram.com/tareq.aakef2?igsh=NWptcTh2c2t2bGM2&utm_source=qr'},
+    {id:3,name:'تيك توك',icon:'🎵',handle:'@tareq.aakef',url:'https://www.tiktok.com/@tareq.aakef'},
   ],
   about:'مرحباً! أنا صانع محتوى تقني متخصص في مشاركة أفضل الأدوات والتطبيقات. أساعد متابعيّ على اكتشاف التقنيات الحديثة.'
 };
@@ -218,7 +217,7 @@ function render(){
   document.getElementById('hArts').innerHTML=D.arts.slice(-4).map(artCard).join('')||empty('📰','لا توجد مقالات');
   document.getElementById('appsList').innerHTML=D.apps.map(appCard).join('')||empty('🛠','أضف أول أداة!');
   document.getElementById('artsList').innerHTML=D.arts.map(artCard).join('')||empty('📰','أضف أول مقالة!');
-  document.getElementById('conList').innerHTML=D.cons.map(conCard).join('')||empty('📬','أضف روابط تواصلك');
+  document.getElementById('conList').innerHTML=D.cons.map(conCard).join('')||empty('📬','لا توجد روابط');
   document.getElementById('aboutTxt').textContent=D.about;
 }
 
@@ -229,7 +228,6 @@ function appCard(a){
     <div class="app-top"><div class="app-icon">${a.icon||'⚡'}</div><div><div class="app-name">${a.name}</div><span class="app-cat">${a.cat}</span></div></div>
     <div class="app-desc">${a.desc}</div>
     ${a.url?`<div class="app-link" onclick="window.open('${a.url}','_blank')">🔗 فتح الرابط</div>`:''}
-    <button class="del" onclick="del('apps',${a.id})">🗑 حذف</button>
   </div>`;
 }
 
@@ -239,7 +237,6 @@ function artCard(a){
     <div class="art-title">${a.title}</div>
     <div class="art-excerpt">${a.excerpt}</div>
     <div class="art-footer"><span>${a.date||'الآن'}</span></div>
-    <button class="del" onclick="event.stopPropagation();del('arts',${a.id})">🗑 حذف</button>
   </div>`;
 }
 
@@ -248,7 +245,6 @@ function conCard(c){
     <div class="con-icon">${c.icon||'🔗'}</div>
     <div class="con-name">${c.name}</div>
     <div class="con-handle">${c.handle}</div>
-    <button class="del" onclick="event.preventDefault();del('cons',${c.id})">🗑 حذف</button>
   </a>`;
 }
 
@@ -270,16 +266,6 @@ function addArt(){
 
 function saveAbout(){D.about=document.getElementById('aboutI').value;close_('aboutM');render();}
 
-function addCon(){
-  const n=document.getElementById('cN').value.trim();
-  if(!n)return alert('أدخل اسم المنصة');
-  D.cons.push({id:Date.now(),name:n,icon:document.getElementById('cI').value||'🔗',handle:document.getElementById('cH').value,url:document.getElementById('cU').value});
-  close_('conM');['cN','cI','cH','cU'].forEach(x=>document.getElementById(x).value='');
-  render();
-}
-
-function del(t,id){if(!confirm('هل تريد الحذف؟'))return;D[t]=D[t].filter(i=>i.id!==id);render();}
-
 function go(id){
   document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -293,9 +279,6 @@ function close_(id){document.getElementById(id).classList.remove('open');}
 document.querySelectorAll('.overlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
 
 render();
-</script></body>
-</html>
-    
-  </body>
-  
+</script>
+</body>
 </html>
